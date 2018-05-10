@@ -1,6 +1,6 @@
 var Helpers = {
     isToBottom: function($viewport, $content) {
-        return $viewport.height() + $viewport.scrollTop() - 14 > $content.height()
+        return $viewport.height() + $viewport.scrollTop() + 30 > $content.height()
 
     },
     createNode: function(subject){
