@@ -136,7 +136,6 @@ var UsBoard = {
         })
     },
     renderData: function(data){
-        console.log(data)
         var _this = this
         data.subjects.forEach(function(item){
             var $node = Helpers.createNode(item.subject)
@@ -164,13 +163,11 @@ var Search = {
         var _this = this
         this.$container.on('scroll', function(){
             if(Helpers.isToBottom(_this.$container, _this.$container.find('wrap')) && !_this.isFinished && !_this.isLoading){
-                console.log('to bottom')
                 _this.getData(function(data){
                     _this.renderData(data)
                     _this.page++
                     if(_this.page * _this.count > data.total){
                         _this.isFinished = true
-                        console.log(_this.isFinished)
                     }
                 })
             }
@@ -182,8 +179,7 @@ var Search = {
             })
         })
         this.$container.find('.search-area input').on('keyup', function(e){
-            if(e.key === 'Enter') {
-                console.log('enter')
+            if(e.key === 'Enter') { 
                 _this.getData(function(data){
                     _this.renderData(data)
                 })
@@ -195,7 +191,7 @@ var Search = {
         var keyword = _this.$container.find('.search-area input').val()
         this.isLoading = true
         $.ajax({
-            url: 'http://api.douban.com/v2/movie/search',
+            url: 'https://api.douban.com/v2/movie/search',
             data: {
                 q: keyword
             },
